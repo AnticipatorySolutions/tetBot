@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+ <title>TetNet</title>
+ <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+ <style>
+   body {
+    background-color: #111;
+  }
+  .text {
+    color: #aaa;
+    font-family: Inconsolata, Courier, monospace;
+    font-size: 20px;
+  }
+  #canvas {
+    float: left;
+    padding-left: 20%;
+  }
+  #score {
+    padding-left: 55%;
+  }
+  #instructions {
+    padding-left: 55%;
+	font-size: small;
+    line-height: 110%;
+  }
+  a:link {
+    color: inherit;
+  }
+</style>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <div id="score" class="text"></div>
+  <div id="instructions" class="text"><br /><b>[Key Commands]</b><br /><br />Speed Up: [E]<br />Slow Down: [D]<br />Toggle AI: [A]<br />Move Shape: [Arrow Keys]<br />Rotate Shape: [Up Arrow]<br />Drop Shape: [Down Arrow]<br />Pick Shape: [I,O,T,S,Z,J,L]</div>
+  <script src="./tetbot.js"></script>
+  <script>
+    $(window).keydown(function (e){
+      if (e.ctrlKey) {
+        var archiveJSON = $.ajax({
+          url: "./archive.json",
+          async: false
+        }).responseText;
+        loadArchive(archiveJSON);
+        alert("Archive loaded successfully!");
+      }
+    });
+  </script>
+  <script type="text/javascript">
+  </script>
+</body>
+</html>
